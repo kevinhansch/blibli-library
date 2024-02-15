@@ -10,9 +10,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class CreateBookWebRequest {
-
-  private String variable;
-  private String value;
-  private String description;
-
+  private String title;
+  private String author;
+  private String publisher;
 }

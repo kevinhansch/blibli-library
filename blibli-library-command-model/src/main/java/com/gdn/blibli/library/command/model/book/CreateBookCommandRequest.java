@@ -13,10 +13,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class CreateBookCommandRequest {
   @NotBlank(message = "NotBlank")
-  private String variable;
+  private String title;
   @NotBlank(message = "NotBlank")
-  private String value;
+  private String author;
   @NotBlank(message = "NotBlank")
-  private String description;
-
+  private String publisher;
 }

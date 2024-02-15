@@ -37,14 +37,14 @@ public class BookController {
 
   @PostHeaders
   public Mono<Response<CreateBookWebResponse>> create(
-      @RequestBody CreateBookWebRequest createSystemParamWebRequest) {
-    log.info("#createBook with request: {}", createSystemParamWebRequest);
+      @RequestBody CreateBookWebRequest createBookWebRequest) {
+    log.info("#createBook with request: {}", createBookWebRequest);
     return this.commandExecutor
         .execute(CreateBookCommand.class,
             CreateBookCommandRequest.builder()
-                .variable(createSystemParamWebRequest.getVariable())
-                .value(createSystemParamWebRequest.getValue())
-                .description(createSystemParamWebRequest.getDescription()).build())
+                .title(createBookWebRequest.getTitle())
+                .author(createBookWebRequest.getAuthor())
+                .publisher(createBookWebRequest.getPublisher()).build())
         .map(ResponseHelper::ok).subscribeOn(scheduler);
   }
 }
