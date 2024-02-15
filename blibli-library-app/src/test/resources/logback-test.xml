@@ -1,0 +1,21 @@
+<configuration scan="true">
+	<springProperty scope="context" name="springAppName" source="spring.application.name"/>
+    <conversionRule conversionWord="clr" converterClass="org.springframework.boot.logging.logback.ColorConverter"/>    
+  <conversionRule conversionWord="wex"
+                    converterClass="org.springframework.boot.logging.logback.WhitespaceThrowableProxyConverter"/>
+  <conversionRule conversionWord="wEx"
+                    converterClass="org.springframework.boot.logging.logback.ExtendedWhitespaceThrowableProxyConverter"/>
+    <appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>[%X{key}]%clr(%d{"yyyy-MM-dd'T'HH:mm:ss,SSSXXX", Asia/Jakarta}){faint} %clr(${LOG_LEVEL_PATTERN:-%5p}) %clr([%thread]){magenta} %clr(---){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %msg%replace(${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}){'\n',' '}%nopex %n</pattern>
+        </encoder>
+    </appender>
+    
+    <logger name="com.gdn" level="OFF" additivity="false">
+        <appender-ref ref="stdout" />
+    </logger>
+
+    <root level="OFF">
+        <appender-ref ref="stdout" />
+    </root>
+</configuration>

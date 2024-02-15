@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <parent>
+    <artifactId>blibli-library</artifactId>
+    <groupId>com.gdn.blibli.library</groupId>
+    <version>0.0.0-1-SNAPSHOT</version>
+  </parent>
+  <modelVersion>4.0.0</modelVersion>
+
+  <artifactId>blibli-library-command-impl</artifactId>
+
+  <dependencies>
+    <dependency>
+      <groupId>com.gdn.blibli.library</groupId>
+      <artifactId>blibli-library-command</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.gdn.blibli.library</groupId>
+      <artifactId>blibli-library-repository</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.gdn.blibli.library</groupId>
+      <artifactId>blibli-library-properties</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-lang3</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-collections4</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>joda-time</groupId>
+      <artifactId>joda-time</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.blibli.oss</groupId>
+      <artifactId>blibli-backend-framework-kafka</artifactId>
+    </dependency>
+  </dependencies>
+
+</project>
