@@ -1,4 +1,4 @@
-package com.gdn.referral.service.constant;
+package com.gdn.blibli.library.constant;
 
 public class MandatoryParameterName {
   public static final String STORE_ID = "storeId";

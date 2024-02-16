@@ -9,8 +9,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class CreateBookWebRequest {
-  private String code;
+public class UpdateBookWebRequest {
   private String title;
   private String author;
   private String publisher;

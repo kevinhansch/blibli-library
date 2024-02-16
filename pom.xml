@@ -106,6 +106,21 @@
       </dependency>
       <dependency>
         <groupId>com.gdn.blibli.library</groupId>
+        <artifactId>blibli-library-exception</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.gdn.blibli.library</groupId>
+        <artifactId>blibli-library-enum</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.gdn.blibli.library</groupId>
+        <artifactId>blibli-library-helper</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.gdn.blibli.library</groupId>
         <artifactId>blibli-library-properties</artifactId>
         <version>${project.version}</version>
       </dependency>
@@ -147,11 +162,6 @@
       <dependency>
         <groupId>com.blibli.oss</groupId>
         <artifactId>blibli-backend-framework-common</artifactId>
-        <version>${blibli-framework.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.blibli.oss</groupId>
-        <artifactId>blibli-backend-framework-kafka</artifactId>
         <version>${blibli-framework.version}</version>
       </dependency>
       <dependency>
@@ -298,6 +308,9 @@
     <module>blibli-library-command-impl</module>
     <module>blibli-library-command-model</module>
     <module>blibli-library-entity</module>
+    <module>blibli-library-exception</module>
+    <module>blibli-library-enum</module>
+    <module>blibli-library-helper</module>
     <module>blibli-library-repository</module>
     <module>blibli-library-validation</module>
     <module>blibli-library-properties</module>

@@ -18,9 +18,4 @@ public class SchedulerConfiguration {
   public Scheduler commandScheduler() {
     return schedulerHelper.of("COMMAND");
   }
-
-  @Bean
-  public Scheduler kafkaScheduler() {
-    return schedulerHelper.of("KAFKA");
-  }
 }

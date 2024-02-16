@@ -20,6 +20,18 @@
     </dependency>
     <dependency>
       <groupId>com.gdn.blibli.library</groupId>
+      <artifactId>blibli-library-helper</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.gdn.blibli.library</groupId>
+      <artifactId>blibli-library-enum</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.gdn.blibli.library</groupId>
+      <artifactId>blibli-library-exception</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.gdn.blibli.library</groupId>
       <artifactId>blibli-library-properties</artifactId>
     </dependency>
     <dependency>
@@ -33,10 +45,6 @@
     <dependency>
       <groupId>joda-time</groupId>
       <artifactId>joda-time</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>com.blibli.oss</groupId>
-      <artifactId>blibli-backend-framework-kafka</artifactId>
     </dependency>
   </dependencies>
 

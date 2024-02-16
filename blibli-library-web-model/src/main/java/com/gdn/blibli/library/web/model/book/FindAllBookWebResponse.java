@@ -5,13 +5,13 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class CreateBookWebRequest {
-  private String code;
-  private String title;
-  private String author;
-  private String publisher;
+public class FindAllBookWebResponse {
+  private List<FindBookWebResponse> responses;
+  private Long total;
 }

@@ -7,48 +7,36 @@
   </parent>
   <modelVersion>4.0.0</modelVersion>
 
-  <artifactId>blibli-library-web</artifactId>
+  <artifactId>blibli-library-helper</artifactId>
 
   <dependencies>
     <dependency>
       <groupId>com.gdn.blibli.library</groupId>
-      <artifactId>blibli-library-command</artifactId>
+      <artifactId>blibli-library-repository</artifactId>
     </dependency>
-      <dependency>
-          <groupId>com.gdn.blibli.library</groupId>
-          <artifactId>blibli-library-exception</artifactId>
-      </dependency>
     <dependency>
       <groupId>com.gdn.blibli.library</groupId>
-      <artifactId>blibli-library-properties</artifactId>
+      <artifactId>blibli-library-web-model</artifactId>
     </dependency>
     <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-webflux</artifactId>
+      <groupId>com.gdn.blibli.library</groupId>
+      <artifactId>blibli-library-command-model</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.gdn.blibli.library</groupId>
+      <artifactId>blibli-library-constant</artifactId>
     </dependency>
     <dependency>
       <groupId>org.springframework.cloud</groupId>
       <artifactId>spring-cloud-starter-sleuth</artifactId>
     </dependency>
     <dependency>
-  	  <groupId>com.blibli.oss</groupId>
-  	  <artifactId>blibli-backend-framework-mandatory-parameter</artifactId>
-	</dependency>
-    <dependency>
-  	  <groupId>com.blibli.oss</groupId>
-  	  <artifactId>blibli-backend-framework-common</artifactId>
-	</dependency>
-	<dependency>
-  	  <groupId>com.blibli.oss</groupId>
-  	  <artifactId>blibli-backend-framework-command</artifactId>
-	</dependency>
-	<dependency>
       <groupId>org.apache.commons</groupId>
       <artifactId>commons-lang3</artifactId>
-	</dependency>
+    </dependency>
     <dependency>
-      <groupId>joda-time</groupId>
-      <artifactId>joda-time</artifactId>
+      <groupId>com.gdn</groupId>
+      <artifactId>gdn-common-client-sdk</artifactId>
     </dependency>
   </dependencies>
 
