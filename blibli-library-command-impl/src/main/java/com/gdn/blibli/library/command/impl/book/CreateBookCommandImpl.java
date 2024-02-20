@@ -2,8 +2,8 @@ package com.gdn.blibli.library.command.impl.book;
 
 import com.gdn.blibli.library.command.book.CreateBookCommand;
 import com.gdn.blibli.library.command.model.book.CreateBookCommandRequest;
-import com.gdn.blibli.library.constant.BookStatus;
 import com.gdn.blibli.library.entity.Book;
+import com.gdn.blibli.library.enums.BookStatus;
 import com.gdn.blibli.library.helper.ResponseHelper;
 import com.gdn.blibli.library.repository.BookRepository;
 import com.gdn.blibli.library.web.model.book.CreateBookWebResponse;
