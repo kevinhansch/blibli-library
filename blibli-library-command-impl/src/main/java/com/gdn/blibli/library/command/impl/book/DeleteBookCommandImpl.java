@@ -1,7 +1,7 @@
 package com.gdn.blibli.library.command.impl.book;
 
+import com.gdn.blibli.library.command.book.DeleteBookCommand;
 import com.gdn.blibli.library.command.model.book.DeleteBookCommandRequest;
-import com.gdn.blibli.library.command.status.DeleteBookCommand;
 import com.gdn.blibli.library.entity.Book;
 import com.gdn.blibli.library.enums.ErrorCodes;
 import com.gdn.blibli.library.exceptions.BusinessException;

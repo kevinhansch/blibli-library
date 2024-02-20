@@ -1,7 +1,7 @@
 package com.gdn.blibli.library.command.impl.book;
 
+import com.gdn.blibli.library.command.book.FindOneBookCommand;
 import com.gdn.blibli.library.command.model.book.FindOneBookCommandRequest;
-import com.gdn.blibli.library.command.status.FindOneBookCommand;
 import com.gdn.blibli.library.entity.Book;
 import com.gdn.blibli.library.helper.ResponseHelper;
 import com.gdn.blibli.library.repository.BookRepository;

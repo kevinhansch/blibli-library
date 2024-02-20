@@ -13,9 +13,4 @@ public class BookRepositoryImpl implements BookRepositoryCustom {
   @Autowired
   private ReactiveMongoTemplate mongoTemplate;
 
-  @Override
-  public Mono<Book> updateStatus(String id, String status) {
-    return null;
-  }
-
 }

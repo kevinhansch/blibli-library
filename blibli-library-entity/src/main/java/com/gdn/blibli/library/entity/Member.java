@@ -11,5 +11,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @AllArgsConstructor
 @Document(collection = CollectionName.MEMBER)
 public class Member extends BaseEntity {
+  private String memberId;
   private String name;
+  private String phoneNumber;
 }

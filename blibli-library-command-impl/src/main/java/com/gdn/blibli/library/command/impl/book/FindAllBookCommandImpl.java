@@ -1,7 +1,7 @@
 package com.gdn.blibli.library.command.impl.book;
 
+import com.gdn.blibli.library.command.book.FindAllBookCommand;
 import com.gdn.blibli.library.command.model.book.FindAllBookCommandRequest;
-import com.gdn.blibli.library.command.status.FindAllBookCommand;
 import com.gdn.blibli.library.entity.Book;
 import com.gdn.blibli.library.enums.ErrorCodes;
 import com.gdn.blibli.library.exceptions.BusinessException;
