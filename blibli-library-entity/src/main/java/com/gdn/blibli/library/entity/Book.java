@@ -1,7 +1,7 @@
 package com.gdn.blibli.library.entity;
 
-import com.gdn.blibli.library.constant.BookStatus;
 import com.gdn.blibli.library.constant.CollectionName;
+import com.gdn.blibli.library.enums.BookStatus;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import lombok.AllArgsConstructor;

@@ -4,20 +4,24 @@ import com.blibli.oss.backend.common.helper.PagingHelper;
 import com.blibli.oss.backend.common.model.request.PagingRequest;
 import com.blibli.oss.backend.common.model.response.Paging;
 import com.blibli.oss.backend.common.swagger.annotation.PagingRequestInQuery;
+import com.gdn.blibli.library.command.book.FindBookByFilterCommand;
 import com.gdn.blibli.library.command.model.book.DeleteBookCommandRequest;
 import com.gdn.blibli.library.command.model.book.FindAllBookCommandRequest;
+import com.gdn.blibli.library.command.model.book.FindBookByFilterCommandRequest;
 import com.gdn.blibli.library.command.model.book.FindOneBookCommandRequest;
 import com.gdn.blibli.library.command.model.book.UpdateBookCommandRequest;
 import com.gdn.blibli.library.command.book.DeleteBookCommand;
 import com.gdn.blibli.library.command.book.FindAllBookCommand;
 import com.gdn.blibli.library.command.book.FindOneBookCommand;
 import com.gdn.blibli.library.command.book.UpdateBookCommand;
+import com.gdn.blibli.library.enums.BookStatus;
 import com.gdn.blibli.library.web.annotation.DeleteHeaders;
 import com.gdn.blibli.library.web.annotation.PostHeaders;
 import com.gdn.blibli.library.web.annotation.PutHeaders;
 import com.gdn.blibli.library.web.model.book.FindBookWebResponse;
 import com.gdn.blibli.library.web.model.book.UpdateBookWebRequest;
 import com.gdn.blibli.library.web.model.book.UpdateBookWebResponse;
+import org.apache.commons.lang3.EnumUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.MediaType;
@@ -111,6 +115,29 @@ public class BookController {
     log.info("#findAllBook with pagingRequest: {}", pagingRequest);
     return this.commandExecutor
         .execute(FindAllBookCommand.class, FindAllBookCommandRequest.builder()
+            .page(pagingRequest.getPage()).size(pagingRequest.getItemPerPage()).build())
+        .map(response -> {
+          Paging paging = PagingHelper.toPaging(pagingRequest, response.getTotal());
+          return ResponseHelper.ok(response.getResponses(), paging);
+        }).subscribeOn(scheduler);
+  }
+
+  @GetMapping(path = "/findByFilter")
+  @PagingRequestInQuery
+  public Mono<Response<List<FindBookWebResponse>>> findByFilter(
+      @RequestParam(required = false) String bookCode,
+      @RequestParam(required = false) String title,
+      @RequestParam(required = false) String author,
+      @RequestParam(required = false) String publisher,
+      @RequestParam(required = false) String bookStatus,
+      PagingRequest pagingRequest) {
+    log.info("#findBookByFilter with bookCode: {}, title: {}, author: {}," +
+        "publisher: {}, bookStatus: {}, pagingRequest: {}", bookCode, title,
+        author, publisher, bookStatus, pagingRequest);
+    return this.commandExecutor
+        .execute(FindBookByFilterCommand.class, FindBookByFilterCommandRequest.builder()
+            .bookCode(bookCode).title(title).author(author).publisher(publisher)
+            .bookStatus(EnumUtils.getEnum(BookStatus.class, bookStatus))
             .page(pagingRequest.getPage()).size(pagingRequest.getItemPerPage()).build())
         .map(response -> {
           Paging paging = PagingHelper.toPaging(pagingRequest, response.getTotal());
