@@ -24,7 +24,7 @@ public class FindOneBookCommandImpl implements FindOneBookCommand {
         .map(this::toFindBookWebResponse)
         .doOnError(
             e -> log.error("Error when #createBook with request: {}, errorMessage: {}",
-                request, e.getMessage(), e));
+                request, e.getMessage()));
   }
 
   private FindBookWebResponse toFindBookWebResponse(

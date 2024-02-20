@@ -34,7 +34,7 @@ public class FindAllBookCommandImpl implements FindAllBookCommand {
         .switchIfEmpty(Mono.error(new BusinessException(ErrorCodes.DATA_NOT_FOUND)))
         .doOnError(e -> log.error(
             "Error when #findAllBook with page: {}, size: {}, errorMessage: {}",
-            request.getPage(), request.getSize(), e.getMessage(), e));
+            request.getPage(), request.getSize(), e.getMessage()));
   }
 
   private PageRequest toPageRequest(Long page, Long size) {

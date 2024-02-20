@@ -27,7 +27,7 @@ public class CreateBookCommandImpl implements CreateBookCommand {
         .map(this::toCreateBookWebResponse)
         .doOnError(
             e -> log.error("Error when #createBook with request: {}, errorMessage: {}",
-                request, e.getMessage(), e));
+                request, e.getMessage()));
   }
 
   private Book toBook(CreateBookCommandRequest request) {

@@ -25,7 +25,7 @@ public class DeleteBookCommandImpl implements DeleteBookCommand {
         .flatMap(this::delete)
         .doOnError(
             e -> log.error("Error when #deleteBook with code: {}, errorMessage: {}",
-                request.getCode(), e.getMessage(), e));
+                request.getCode(), e.getMessage()));
   }
 
   private Mono<Boolean> delete(Book book) {

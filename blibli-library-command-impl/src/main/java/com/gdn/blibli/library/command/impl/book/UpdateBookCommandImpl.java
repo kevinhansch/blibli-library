@@ -28,7 +28,7 @@ public class UpdateBookCommandImpl implements UpdateBookCommand {
         .switchIfEmpty(Mono.error(new BusinessException(ErrorCodes.DATA_NOT_FOUND)))
         .doOnError(
             e -> log.error("Error when #updateBook with request: {}, errorMessage: {}",
-                request, e.getMessage(), e));
+                request, e.getMessage()));
   }
 
   private Book updateBookFields(Book book, UpdateBookCommandRequest request) {
