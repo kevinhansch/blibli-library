@@ -67,11 +67,6 @@
       <artifactId>wiremock</artifactId>
       <scope>test</scope>
     </dependency>
-    <dependency>
-      <groupId>com.blibli.oss</groupId>
-      <artifactId>blibli-backend-framework-kafka</artifactId>
-      <scope>test</scope>
-    </dependency>
   </dependencies>
 
   <build>

@@ -28,9 +28,6 @@ public class TestHelper {
   @Autowired
   private ObjectMapper objectMapper;
 
-  @Autowired
-  private KafkaTestHelper kafkaTestHelper;
-
   public <T> T jsonFileToObject(String path, Class<T> clazz) {
     try {
       String json = getJsonByPath(path);
