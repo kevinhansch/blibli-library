@@ -34,12 +34,9 @@ public class DemoController {
   @GetMapping
   public Mono<Response<Boolean>> demo() {
     log.info("start hitting #demo");
-
     this.commandExecutor.execute(Demo1Command.class, "")
-        .publishOn(scheduler).subscribe();
-    this.commandExecutor.execute(Demo2Command.class, "")
         .subscribeOn(scheduler).subscribe();
-    this.commandExecutor.execute(Demo3Command.class, "")
+    this.commandExecutor.execute(Demo2Command.class, "")
         .subscribeOn(scheduler).subscribe();
     return Mono.just(ResponseHelper.ok(Boolean.TRUE));
   }
