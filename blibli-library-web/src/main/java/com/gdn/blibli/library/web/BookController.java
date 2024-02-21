@@ -4,7 +4,9 @@ import com.blibli.oss.backend.common.helper.PagingHelper;
 import com.blibli.oss.backend.common.model.request.PagingRequest;
 import com.blibli.oss.backend.common.model.response.Paging;
 import com.blibli.oss.backend.common.swagger.annotation.PagingRequestInQuery;
+import com.gdn.blibli.library.command.book.BorrowBookCommand;
 import com.gdn.blibli.library.command.book.FindBookByFilterCommand;
+import com.gdn.blibli.library.command.model.book.BorrowBookCommandRequest;
 import com.gdn.blibli.library.command.model.book.DeleteBookCommandRequest;
 import com.gdn.blibli.library.command.model.book.FindAllBookCommandRequest;
 import com.gdn.blibli.library.command.model.book.FindBookByFilterCommandRequest;
@@ -18,6 +20,7 @@ import com.gdn.blibli.library.enums.BookStatus;
 import com.gdn.blibli.library.web.annotation.DeleteHeaders;
 import com.gdn.blibli.library.web.annotation.PostHeaders;
 import com.gdn.blibli.library.web.annotation.PutHeaders;
+import com.gdn.blibli.library.web.model.book.BorrowBookWebRequest;
 import com.gdn.blibli.library.web.model.book.FindBookWebResponse;
 import com.gdn.blibli.library.web.model.book.UpdateBookWebRequest;
 import com.gdn.blibli.library.web.model.book.UpdateBookWebResponse;
@@ -143,5 +146,17 @@ public class BookController {
           Paging paging = PagingHelper.toPaging(pagingRequest, response.getTotal());
           return ResponseHelper.ok(response.getResponses(), paging);
         }).subscribeOn(scheduler);
+  }
+
+  @PostHeaders
+  public Mono<Response<Boolean>> borrowBook(
+      @RequestBody BorrowBookWebRequest borrowBookWebRequest) {
+    log.info("#borrowBook with request: {}", borrowBookWebRequest);
+    return this.commandExecutor
+        .execute(BorrowBookCommand.class,
+            BorrowBookCommandRequest.builder()
+                .memberId(borrowBookWebRequest.getMemberId())
+                .bookCode(borrowBookWebRequest.getBookCode()).build())
+        .map(ResponseHelper::ok).subscribeOn(scheduler);
   }
 }
