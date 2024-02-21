@@ -22,33 +22,34 @@ public class CreateBookCommandImpl implements CreateBookCommand {
 
   @Override
   public Mono<CreateBookWebResponse> execute(CreateBookCommandRequest request) {
-    return this.bookRepository.save(this.toBook(request))
-        .map(this::toCreateBookWebResponse)
-        .doOnError(
-            e -> log.error("Error when #createBook with request: {}, errorMessage: {}",
-                request, e.getMessage()));
+//    return this.bookRepository.save(this.toBook(request))
+//        .map(this::toCreateBookWebResponse)
+//        .doOnError(
+//            e -> log.error("Error when #createBook with request: {}, errorMessage: {}",
+//                request, e.getMessage()));
+    return Mono.empty();
   }
 
-  private Book toBook(CreateBookCommandRequest request) {
-    Book book = new Book();
-    book.setCode(request.getCode());
-    book.setTitle(request.getTitle());
-    book.setAuthor(request.getAuthor());
-    book.setPublisher(request.getPublisher());
-    book.setStatus(BookStatus.AVAILABLE);
-    return book;
-  }
-
-  private CreateBookWebResponse toCreateBookWebResponse(
-      Book book) {
-    CreateBookWebResponse response = CreateBookWebResponse.builder()
-        .code(book.getCode())
-        .title(book.getTitle())
-        .author(book.getAuthor())
-        .publisher(book.getPublisher())
-        .status(book.getStatus().name())
-        .build();
-
-    return ResponseHelper.setBaseResponse(response, book);
-  }
+//  private Book toBook(CreateBookCommandRequest request) {
+//    Book book = new Book();
+//    book.setCode(request.getCode());
+//    book.setTitle(request.getTitle());
+//    book.setAuthor(request.getAuthor());
+//    book.setPublisher(request.getPublisher());
+//    book.setStatus(BookStatus.AVAILABLE);
+//    return book;
+//  }
+//
+//  private CreateBookWebResponse toCreateBookWebResponse(
+//      Book book) {
+//    CreateBookWebResponse response = CreateBookWebResponse.builder()
+//        .code(book.getCode())
+//        .title(book.getTitle())
+//        .author(book.getAuthor())
+//        .publisher(book.getPublisher())
+//        .status(book.getStatus().name())
+//        .build();
+//
+//    return ResponseHelper.setBaseResponse(response, book);
+//  }
 }

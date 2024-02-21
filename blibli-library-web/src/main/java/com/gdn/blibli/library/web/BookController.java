@@ -67,62 +67,67 @@ public class BookController {
   public Mono<Response<CreateBookWebResponse>> create(
       @RequestBody CreateBookWebRequest createBookWebRequest) {
     log.info("#createBook with request: {}", createBookWebRequest);
-    return this.commandExecutor
-        .execute(CreateBookCommand.class,
-            CreateBookCommandRequest.builder()
-                .code(createBookWebRequest.getCode())
-                .title(createBookWebRequest.getTitle())
-                .author(createBookWebRequest.getAuthor())
-                .publisher(createBookWebRequest.getPublisher()).build())
-        .map(ResponseHelper::ok).subscribeOn(scheduler);
+//    return this.commandExecutor
+//        .execute(CreateBookCommand.class,
+//            CreateBookCommandRequest.builder()
+//                .code(createBookWebRequest.getCode())
+//                .title(createBookWebRequest.getTitle())
+//                .author(createBookWebRequest.getAuthor())
+//                .publisher(createBookWebRequest.getPublisher()).build())
+//        .map(ResponseHelper::ok).subscribeOn(scheduler);
+    return null;
   }
 
   @PutHeaders
   public Mono<Response<UpdateBookWebResponse>> update(@RequestParam String code,
       @RequestBody UpdateBookWebRequest updateBookWebRequest) {
     log.info("#updateBook with code: {}, request: {}", code, updateBookWebRequest);
-    return this.commandExecutor
-        .execute(UpdateBookCommand.class,
-            UpdateBookCommandRequest.builder()
-                .code(code)
-                .title(updateBookWebRequest.getTitle())
-                .author(updateBookWebRequest.getAuthor())
-                .publisher(updateBookWebRequest.getPublisher()).build())
-        .map(ResponseHelper::ok).subscribeOn(scheduler);
+//    return this.commandExecutor
+//        .execute(UpdateBookCommand.class,
+//            UpdateBookCommandRequest.builder()
+//                .code(code)
+//                .title(updateBookWebRequest.getTitle())
+//                .author(updateBookWebRequest.getAuthor())
+//                .publisher(updateBookWebRequest.getPublisher()).build())
+//        .map(ResponseHelper::ok).subscribeOn(scheduler);
+    return null;
   }
 
   @DeleteHeaders
   public Mono<Response<Boolean>> delete(
       @RequestParam String code) {
     log.info("#deleteBook with code: {}", code);
-    return this.commandExecutor
-        .execute(DeleteBookCommand.class,
-            DeleteBookCommandRequest.builder().code(code).build())
-        .map(ResponseHelper::ok).subscribeOn(scheduler);
+//    return this.commandExecutor
+//        .execute(DeleteBookCommand.class,
+//            DeleteBookCommandRequest.builder().code(code).build())
+//        .map(ResponseHelper::ok).subscribeOn(scheduler);
+    return null;
   }
 
   @GetMapping
   public Mono<Response<FindBookWebResponse>> findOne(
       @RequestParam String code) {
     log.info("#findOneBook with code: {}", code);
-    return this.commandExecutor
-        .execute(FindOneBookCommand.class,
-            FindOneBookCommandRequest.builder()
-                .code(code).build())
-        .map(ResponseHelper::ok).subscribeOn(scheduler);
+//    return this.commandExecutor
+//        .execute(FindOneBookCommand.class,
+//            FindOneBookCommandRequest.builder()
+//                .code(code).build())
+//        .map(ResponseHelper::ok).subscribeOn(scheduler);
+    return null;
   }
 
   @GetMapping(path = "/all")
   @PagingRequestInQuery
   public Mono<Response<List<FindBookWebResponse>>> findAll(PagingRequest pagingRequest) {
     log.info("#findAllBook with pagingRequest: {}", pagingRequest);
-    return this.commandExecutor
-        .execute(FindAllBookCommand.class, FindAllBookCommandRequest.builder()
-            .page(pagingRequest.getPage()).size(pagingRequest.getItemPerPage()).build())
-        .map(response -> {
-          Paging paging = PagingHelper.toPaging(pagingRequest, response.getTotal());
-          return ResponseHelper.ok(response.getResponses(), paging);
-        }).subscribeOn(scheduler);
+//    return this.commandExecutor
+//        .execute(FindAllBookCommand.class, FindAllBookCommandRequest.builder()
+//            .page(pagingRequest.getPage()).size(pagingRequest.getItemPerPage()).build())
+//        .map(response -> {
+//          Paging paging = PagingHelper.toPaging(pagingRequest, response.getTotal());
+//          return ResponseHelper.ok(response.getResponses(), paging);
+//        }).subscribeOn(scheduler);
+    return null;
   }
 
   @GetMapping(path = "/findByFilter")
@@ -148,7 +153,7 @@ public class BookController {
         }).subscribeOn(scheduler);
   }
 
-  @PostHeaders
+  @PostHeaders(path = "/borrowBook")
   public Mono<Response<Boolean>> borrowBook(
       @RequestBody BorrowBookWebRequest borrowBookWebRequest) {
     log.info("#borrowBook with request: {}", borrowBookWebRequest);

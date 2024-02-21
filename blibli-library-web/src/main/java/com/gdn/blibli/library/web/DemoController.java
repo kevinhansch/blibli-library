@@ -4,16 +4,14 @@ import com.blibli.oss.backend.command.executor.CommandExecutor;
 import com.blibli.oss.backend.common.helper.ResponseHelper;
 import com.blibli.oss.backend.common.model.response.Response;
 import com.blibli.oss.backend.mandatoryparameter.swagger.annotation.MandatoryParameterAtHeader;
-import com.gdn.blibli.library.command.model.book.CreateBookCommandRequest;
-import com.gdn.blibli.library.command.book.CreateBookCommand;
-import com.gdn.blibli.library.web.annotation.PostHeaders;
-import com.gdn.blibli.library.web.model.book.CreateBookWebRequest;
-import com.gdn.blibli.library.web.model.book.CreateBookWebResponse;
+import com.gdn.blibli.library.command.demo.Demo1Command;
+import com.gdn.blibli.library.command.demo.Demo2Command;
+import com.gdn.blibli.library.command.demo.Demo3Command;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.Mono;
@@ -33,17 +31,16 @@ public class DemoController {
   @Qualifier(value = "commandScheduler")
   private Scheduler scheduler;
 
-  @PostHeaders
-  public Mono<Response<CreateBookWebResponse>> create(
-      @RequestBody CreateBookWebRequest createBookWebRequest) {
-    log.info("#createBook with request: {}", createBookWebRequest);
-    return this.commandExecutor
-        .execute(CreateBookCommand.class,
-            CreateBookCommandRequest.builder()
-                .code(createBookWebRequest.getCode())
-                .title(createBookWebRequest.getTitle())
-                .author(createBookWebRequest.getAuthor())
-                .publisher(createBookWebRequest.getPublisher()).build())
-        .map(ResponseHelper::ok).subscribeOn(scheduler);
+  @GetMapping
+  public Mono<Response<Boolean>> demo() {
+    log.info("start hitting #demo");
+
+    this.commandExecutor.execute(Demo1Command.class, "")
+        .publishOn(scheduler).subscribe();
+    this.commandExecutor.execute(Demo2Command.class, "")
+        .subscribeOn(scheduler).subscribe();
+    this.commandExecutor.execute(Demo3Command.class, "")
+        .subscribeOn(scheduler).subscribe();
+    return Mono.just(ResponseHelper.ok(Boolean.TRUE));
   }
 }
