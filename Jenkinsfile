@@ -26,15 +26,6 @@ BlibliPipeline([
                 max_cpu: '1',
                 min_memory: '1Gi',
                 max_memory: '1Gi'
-            ],
-            kafka: [
-                enabled: true,
-                version: '2.13-2.8.1',
-                min_cpu: '2',
-                max_cpu: '2',
-                min_memory: '2Gi',
-                max_memory: '2Gi',
-                partitions_value: '5'
             ]
         ]
     ],

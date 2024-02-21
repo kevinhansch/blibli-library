@@ -251,6 +251,12 @@
         <version>${bwaldvogel.mongo-java-server.version}</version>
         <scope>test</scope>
       </dependency>
+      <dependency>
+        <groupId>com.blibli.oss</groupId>
+        <artifactId>blibli-backend-framework-kafka</artifactId>
+        <version>${blibli-framework.version}</version>
+        <scope>test</scope>
+      </dependency>
     </dependencies>
   </dependencyManagement>
 
