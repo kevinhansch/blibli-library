@@ -67,15 +67,13 @@ public class BookController {
   public Mono<Response<CreateBookWebResponse>> create(
       @RequestBody CreateBookWebRequest createBookWebRequest) {
     log.info("#createBook with request: {}", createBookWebRequest);
-//    return this.commandExecutor
-//        .execute(CreateBookCommand.class,
-//            CreateBookCommandRequest.builder()
-//                .code(createBookWebRequest.getCode())
-//                .title(createBookWebRequest.getTitle())
-//                .author(createBookWebRequest.getAuthor())
-//                .publisher(createBookWebRequest.getPublisher()).build())
-//        .map(ResponseHelper::ok).subscribeOn(scheduler);
-    return null;
+    return this.commandExecutor
+        .execute(CreateBookCommand.class,
+            CreateBookCommandRequest.builder()
+                .code(createBookWebRequest.getCode()).author(createBookWebRequest.getAuthor())
+                .title(createBookWebRequest.getTitle()).publisher(createBookWebRequest.getPublisher())
+                .build())
+        .map(response -> ResponseHelper.ok(response)).subscribeOn(scheduler);
   }
 
   @PutHeaders
@@ -120,14 +118,13 @@ public class BookController {
   @PagingRequestInQuery
   public Mono<Response<List<FindBookWebResponse>>> findAll(PagingRequest pagingRequest) {
     log.info("#findAllBook with pagingRequest: {}", pagingRequest);
-//    return this.commandExecutor
-//        .execute(FindAllBookCommand.class, FindAllBookCommandRequest.builder()
-//            .page(pagingRequest.getPage()).size(pagingRequest.getItemPerPage()).build())
-//        .map(response -> {
-//          Paging paging = PagingHelper.toPaging(pagingRequest, response.getTotal());
-//          return ResponseHelper.ok(response.getResponses(), paging);
-//        }).subscribeOn(scheduler);
-    return null;
+    return this.commandExecutor
+        .execute(FindAllBookCommand.class, FindAllBookCommandRequest.builder()
+            .page(pagingRequest.getPage()).size(pagingRequest.getItemPerPage()).build())
+        .map(response -> {
+          Paging paging = PagingHelper.toPaging(pagingRequest, response.getTotal());
+          return ResponseHelper.ok(response.getResponses(), paging);
+        }).subscribeOn(scheduler);
   }
 
   @GetMapping(path = "/findByFilter")
